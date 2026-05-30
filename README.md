@@ -1,3 +1,9 @@
+| ``_change_type`` | Meaning |
+| --- | --- |
+| ``insert`` | New row |
+| ``update_preimage`` | Old row before update |
+| ``update_postimage`` | New row after update |
+| ``delete`` | Row deleted |
 
 ⭐ Databricks Connect CANNOT run Unity Catalog SQL commands.
 Your SQL is correct.
