@@ -9,11 +9,9 @@ format => 'CSV' ,
 header =>True
 ) ;
 
-
 CREATE STREAMING TABLE orders_silver
 select order_id,customer_id,order_date,amount,city ,source_file, ingestion_timestamp
 from stream orders_bronze ; 
-
 --where _rescued_data is null
 
 create materialized view orders_by_date_gold
@@ -23,4 +21,5 @@ select order_date, sum(amount) as total_amount
 , count(*) as no_of_orders      --,avg(amount) as avg_amount
 from orders_silver
 group by order_date;
+
 

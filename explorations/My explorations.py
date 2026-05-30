@@ -1,5 +1,10 @@
 # Databricks notebook source
 # MAGIC %sql
+# MAGIC select * from namaste_catalog.lakeflowconnect.status_bronze
+
+# COMMAND ----------
+
+# MAGIC %sql
 # MAGIC select * from namaste_catalog.lakeflowconnect.orders_silver
 
 # COMMAND ----------
