@@ -1,6 +1,6 @@
 # from pyspark import pipelines as dp
 
-# @dp.materialized_view()
+# @dp.table
 # def load_raw_data():
 #     df = (
 #         spark.read.format("csv")
@@ -8,6 +8,7 @@
 #         .option("inferSchema", "true")
 #         .load("/Volumes/namaste_catalog/lakeflowconnect/sdp_volume/csv")
 #     )
+
 #     return df.selectExpr(
 #         "Index AS `index`",
 #         "`Customer Id` AS customer_id",

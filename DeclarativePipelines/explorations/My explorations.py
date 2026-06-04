@@ -1,4 +1,8 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "1"
+# ///
 # MAGIC %sql
 # MAGIC select * from namaste_catalog.lakeflowconnect.status_bronze
 
