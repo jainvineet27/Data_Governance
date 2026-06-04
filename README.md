@@ -1,3 +1,10 @@
+| ``_change_type`` | Meaning |
+| --- | --- |
+| ``insert`` | New row |
+| ``update_preimage`` | Old row before update |
+| ``update_postimage`` | New row after update |
+| ``delete`` | Row deleted |
+
 ⭐ Databricks Connect CANNOT run Unity Catalog SQL commands.
 Your SQL is correct.
 Your table exists.
@@ -160,3 +167,5 @@ Unity Catalog only works on Databricks compute.
 Local Spark cannot access UC metadata or cloud storage.
 Therefore, UC operations fail in Connect.
 Databricks SDK is the correct replacement because it executes everything remotely on Databricks.
+
+<img width="1890" height="883" alt="image" src="https://github.com/user-attachments/assets/356db92e-e34b-46e2-9a6e-5101014d579b" />
