@@ -10,7 +10,7 @@ Step 3
 in vi .databrickscfg
 [DEFAULT]
 host=https://adb-7405614604176320.0.azuredatabricks.net/
-token=dapi50fe48da2648118d24c3fa69b8fa9caa-2
+token=Insert the token from the dbx cli
 ~
 
 :wq save and quit
