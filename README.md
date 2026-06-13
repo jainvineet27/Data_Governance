@@ -1,9 +1,26 @@
-| ``_change_type`` | Meaning |
-| --- | --- |
-| ``insert`` | New row |
-| ``update_preimage`` | Old row before update |
-| ``update_postimage`` | New row after update |
-| ``delete`` | Row deleted |
+How to setup Databricks Assest Bundle
+Step 1
+winget search databricks
+winget install Databricks.DatabricksCLI
+
+Step 2
+export DATABRICKS_CONFIG_PROFILE=DEFAULT
+
+Step 3
+in vi .databrickscfg
+[DEFAULT]
+host=https://adb-7405614604176320.0.azuredatabricks.net/
+token=dapi50fe48da2648118d24c3fa69b8fa9caa-2
+~
+
+:wq save and quit
+
+| `_change_type`     | Meaning               |
+| ------------------ | --------------------- |
+| `insert`           | New row               |
+| `update_preimage`  | Old row before update |
+| `update_postimage` | New row after update  |
+| `delete`           | Row deleted           |
 
 ⭐ Databricks Connect CANNOT run Unity Catalog SQL commands.
 Your SQL is correct.
@@ -29,8 +46,8 @@ and Unity Catalog = remote governance layer.
 
 They are not compatible for metadata operations.
 
-
 # Data_Governance
+
 echo "# Data_Governance" >> README.md
 git init
 git add README.md
@@ -63,13 +80,12 @@ Your SQL is correct.
 The error is because Databricks Connect cannot access UC Volumes.
 Run this SQL inside Databricks, not VSCode.
 
-
 Databricks Connect vs Databricks SDK — Simple Explanation
 This document explains why certain Unity Catalog operations fail when using Databricks Connect from VSCode, and why Databricks recommends using the Databricks SDK instead.
 
 1. Databricks Connect cannot access Unity Catalog
-Databricks Connect works by creating a local Spark session on your laptop.
-Unity Catalog, on the other hand, is a remote governance and metadata layer that only works inside Databricks compute (clusters or SQL Warehouses).
+   Databricks Connect works by creating a local Spark session on your laptop.
+   Unity Catalog, on the other hand, is a remote governance and metadata layer that only works inside Databricks compute (clusters or SQL Warehouses).
 
 Because of this architectural mismatch:
 
@@ -88,7 +104,7 @@ Databricks Connect executes locally.
 Therefore, UC operations fail.
 
 2. Why SQL commands fail in Databricks Connect
-Commands like the following will fail in VSCode when using Databricks Connect:
+   Commands like the following will fail in VSCode when using Databricks Connect:
 
 ALTER TABLE
 
@@ -107,8 +123,8 @@ These commands require Unity Catalog metadata access, which is only available in
 When Connect tries to run them locally, Databricks returns an AnalysisException.
 
 3. Why reading Volumes fails
-Unity Catalog Volumes are stored in cloud storage (S3, ADLS, GCS).
-Only Databricks compute has permission to access these locations.
+   Unity Catalog Volumes are stored in cloud storage (S3, ADLS, GCS).
+   Only Databricks compute has permission to access these locations.
 
 Local Spark (Databricks Connect) has:
 
@@ -127,8 +143,8 @@ Code
 will fail when executed from VSCode.
 
 4. Databricks Connect is deprecated for newer runtimes
-Databricks has officially deprecated Databricks Connect for newer runtimes (17.x and above).
-The recommended replacement is the Databricks SDK for Python, which executes code directly on Databricks compute instead of locally.
+   Databricks has officially deprecated Databricks Connect for newer runtimes (17.x and above).
+   The recommended replacement is the Databricks SDK for Python, which executes code directly on Databricks compute instead of locally.
 
 The SDK supports:
 
@@ -151,7 +167,7 @@ Jobs API
 This makes it the correct tool for modern Databricks environments.
 
 5. What Databricks recommends now
-Databricks recommends using:
+   Databricks recommends using:
 
 Databricks SDK for Python
 
@@ -162,10 +178,10 @@ Remote execution via SQL Warehouses or Jobs
 These tools run commands directly on Databricks, so Unity Catalog works correctly.
 
 6. Summary in simple words
-Databricks Connect runs Spark locally.
-Unity Catalog only works on Databricks compute.
-Local Spark cannot access UC metadata or cloud storage.
-Therefore, UC operations fail in Connect.
-Databricks SDK is the correct replacement because it executes everything remotely on Databricks.
+   Databricks Connect runs Spark locally.
+   Unity Catalog only works on Databricks compute.
+   Local Spark cannot access UC metadata or cloud storage.
+   Therefore, UC operations fail in Connect.
+   Databricks SDK is the correct replacement because it executes everything remotely on Databricks.
 
 <img width="1890" height="883" alt="image" src="https://github.com/user-attachments/assets/356db92e-e34b-46e2-9a6e-5101014d579b" />
