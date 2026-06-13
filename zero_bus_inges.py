@@ -124,7 +124,7 @@ try:
             "device": f"sensor-{i % 10}",
             "payload": json.dumps({"temp": 20 + (i % 15), "humidity": 50 + (i % 40)}),
         }
-
+    
         stream.ingest_record(record_dict)
 
         print(f"Ingested record {i + 1}")
